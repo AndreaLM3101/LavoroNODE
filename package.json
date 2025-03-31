@@ -1,0 +1,24 @@
+{
+  "name": "lavoronode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaLM3101/LavoroNODE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AndreaLM3101/LavoroNODE/issues"
+  },
+  "homepage": "https://github.com/AndreaLM3101/LavoroNODE#readme",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.2.2"
+  }
+}
