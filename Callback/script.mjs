@@ -3,7 +3,7 @@ import { Buffer } from 'node:buffer'; // Importa il modulo Buffer per lavorare c
 
 const data = new Uint8Array(Buffer.from('Hello Node.js')); // Buffer converte in dati // Uint8Array Converte in un array
 
-writeFile('message.txt', data, (err) => { // Scrive i dati nel file 'message.txt'
+writeFile('message.txt', data, "utf-8" , (err) => { // Scrive i dati nel file 'message.txt'
     if (err) throw err; // Se c'è un errore, lo lancia e interrompe il programma
     console.log('The file has been saved!');
 });
