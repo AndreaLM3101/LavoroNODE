@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AndreaLM3101/LavoroNODE#readme",
   "description": "",
   "dependencies": {
-    "fastify": "^5.2.2"
+    "fastify": "^5.2.2",
+    "joi": "^17.13.3"
   }
 }

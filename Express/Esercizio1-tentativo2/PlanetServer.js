@@ -22,3 +22,5 @@ const PORT = process.env.PORT || 3000; //cercato
 app.listen(PORT, () => { //cercato
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+//Env: Enviroment: Ambiente
