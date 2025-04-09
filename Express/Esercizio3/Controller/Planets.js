@@ -13,8 +13,8 @@ let planets = [ //Array di oggetti con ID e Name
     res.status(200).json(planets); 
   };
   
-  const getOneById = (req, res) => { //Estrae ID richiesta
-    const id = parseInt(req.params.id);
+  const getOneById = (req, res) => { //Restituisce il pianeta specifico
+    const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
     const planet = planets.find(p => p.id === id); //Cerca tramite ID
     if (!planet) return res.status(404).json({ msg: 'Pianeta non trovato' }); //Se non lo trova: 404
     res.status(200).json(planet);
@@ -34,7 +34,7 @@ let planets = [ //Array di oggetti con ID e Name
   };
   
   const updateById = (req, res) => { // Funzione per aggiornare
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
     const existingPlanet = planets.find(p => p.id === id); //Identificare pianeta
     if (!existingPlanet) return res.status(404).json({ msg: 'Pianeta non trovato' });
   
@@ -49,7 +49,7 @@ let planets = [ //Array di oggetti con ID e Name
   };
   
   const deleteById = (req, res) => { //Funzione Eliminazione
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
     const exists = planets.find(p => p.id === id);
     if (!exists) return res.status(404).json({ msg: 'Pianeta non trovato' });
   

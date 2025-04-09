@@ -14,59 +14,53 @@ let planets = [
 app.use(express.json());
 app.use(morgan('dev'));
 
-// JOI schema
-const planetSchema = Joi.object({
-  name: Joi.string().min(2).required()
+const planetSchema = Joi.object({ //Validazione oggetti
+  name: Joi.string().min(2).required() //Ho dovuto cercare come usare joi: Serve a validare dati rivevuti (Stringa)
 });
 
-// GET all planets
-app.get('/api/planets', (req, res) => {
+app.get('/api/planets', (req, res) => { //Restituisce tutti i pianeti con status 200 (validi)
   res.status(200).json(planets);
 });
 
-// GET planet by id
-app.get('/api/planets/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+app.get('/api/planets/:id', (req, res) => { //Restituisce il pianeta specifico
+  const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
   const planet = planets.find(p => p.id === id);
-  if (!planet) return res.status(404).json({ msg: 'Planet not found' });
+  if (!planet) return res.status(404).json({ msg: 'Pianeta non trovato' });
   res.status(200).json(planet);
 });
 
-// POST create a new planet
-app.post('/api/planets', (req, res) => {
+app.post('/api/planets', (req, res) => { //Funzione per creare
   const { error } = planetSchema.validate(req.body);
   if (error) return res.status(400).json({ msg: error.details[0].message });
 
-  const newPlanet = {
-    id: planets.length ? planets[planets.length - 1].id + 1 : 1,
+  const newPlanet = { //Crea un nuovo pianeta con ID successivo
+    id: planets.length ? planets[planets.length - 1].id + 1 : 1, //(Cercato il metodo per aggiungere ID di 1)
     name: req.body.name
   };
 
   planets.push(newPlanet);
-  res.status(201).json({ msg: 'Planet created successfully' });
+  res.status(201).json({ msg: 'Pianeta Aggiunto' });
 });
 
-// PUT update a planet
-app.put('/api/planets/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+app.put('/api/planets/:id', (req, res) => { // Funzione per aggiornare
+  const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
   const planet = planets.find(p => p.id === id);
-  if (!planet) return res.status(404).json({ msg: 'Planet not found' });
+  if (!planet) return res.status(404).json({ msg: 'Pianeta non trovato' });
 
   const { error } = planetSchema.validate(req.body);
   if (error) return res.status(400).json({ msg: error.details[0].message });
 
   planet.name = req.body.name;
-  res.status(200).json({ msg: 'Planet updated successfully' });
+  res.status(200).json({ msg: 'Pianeta Aggiornato' });
 });
 
-// DELETE a planet
-app.delete('/api/planets/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+app.delete('/api/planets/:id', (req, res) => { //Funzione Eliminazione
+  const id = parseInt(req.params.id); //parseInt Converte una stringa in numero
   const index = planets.findIndex(p => p.id === id);
-  if (index === -1) return res.status(404).json({ msg: 'Planet not found' });
+  if (index === -1) return res.status(404).json({ msg: 'Pianeta non trovato' });
 
-  planets.splice(index, 1);
-  res.status(200).json({ msg: 'Planet deleted successfully' });
+  planets.splice(index, 1); //Metodo degli array per rimuovere (non ricordavo)
+  res.status(200).json({ msg: 'Pianeta Distrutto' });
 });
 
 const PORT = process.env.PORT || 3000;
