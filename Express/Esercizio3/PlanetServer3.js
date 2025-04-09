@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('express-async-errors');
+require('express-async-errors'); //(non c'è bisogno di try-catch)
 const express = require('express');
 const morgan = require('morgan');
 const {
@@ -8,7 +8,7 @@ const {
   create,
   updateById,
   deleteById
-} = require('./Controller/Planets');
+} = require('./Controller/Planets'); //Importa le funzioni
 
 const app = express();
 
@@ -23,6 +23,7 @@ app.put('/api/planets/:id', updateById);
 app.delete('/api/planets/:id', deleteById);
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
