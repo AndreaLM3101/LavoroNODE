@@ -3,6 +3,11 @@ require('express-async-errors');
 const express = require('express');
 const morgan = require('morgan');
 const Joi = require('joi');
+const pgPromise = require('pg-promise');
+
+const db = pgPromise()("postgres://postgres:32460@localhost:5432/postgres")
+
+console.log(db)
 
 const app = express();
 

@@ -12,14 +12,22 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/AndreaLM3101/LavoroNODE/issues"
   },
   "homepage": "https://github.com/AndreaLM3101/LavoroNODE#readme",
   "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "fastify": "^5.2.2",
-    "joi": "^17.13.3"
+    "joi": "^17.13.3",
+    "pg-promise": "^11.13.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
