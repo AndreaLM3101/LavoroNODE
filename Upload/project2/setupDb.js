@@ -1,7 +1,7 @@
 const db = require('./db');
 
 async function setupDb() {  //Per setuppare la tabella
-  await db.none(`DROP TABLE IF EXISTS planets;`); // creo la tabella (db.non è cercato)
+  await db.none(`DROP TABLE IF EXISTS planets;`); // creo la tabella (db.none è cercato)
   await db.none(`
     CREATE TABLE planets (
       id SERIAL PRIMARY KEY,

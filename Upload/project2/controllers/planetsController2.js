@@ -16,8 +16,7 @@ exports.getById = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  // Verifica se 'name' è presente nel corpo della richiesta
-  console.log("Received body:", req.body);
+  console.log("Received body:", req.body); // Verifica se 'name' è presente nel corpo della richiesta
 
   if (!req.body || !req.body.name) { // Aggiungi un controllo per assicurarci che il body e il nome siano presenti
     return res.status(400).json({ error: "Name is required" });
@@ -29,7 +28,6 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  // Verifica se 'name' è presente nel corpo della richiesta
   if (!req.body.name) {
     return res.status(400).json({ error: "Name is required" });
   }
@@ -47,13 +45,13 @@ exports.remove = (req, res) => {
 
 exports.uploadImage = (req, res) => { //Funzione per caricare immagine
   const planetId = req.params.id;
-  const imagePath = req.file?.path;
+  const imagePath = req.file?.path; //Ho trovato che il ? evita errori
 
   if (!imagePath) {
     return res.status(400).json({ error: "No file uploaded" });
   }
 
-  db.none("UPDATE planets SET image=$2 WHERE id=$1", [planetId, imagePath])
+  db.none("UPDATE planets SET image=$2 WHERE id=$1", [planetId, imagePath]) //Aggiorna SQL
     .then(() => res.send("Image uploaded and saved"))
     .catch(err => res.status(500).json({ error: err.message }));
 };
